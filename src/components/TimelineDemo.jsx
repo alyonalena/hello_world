@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import './TimelineDemo.css';
 
-const TimelineDemo = ({ items, onItemClick }) => {
+const TimelineDemo = ({ items, onItemClick, title }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Парсим год в число
@@ -41,7 +41,7 @@ const TimelineDemo = ({ items, onItemClick }) => {
 
   return (
     <div className="timeline-wrapper">
-
+      <h4>{title}</h4>
       <div className="timeline-container">
         {/* Вертикальная линия */}
         <div className="timeline-line"></div>
@@ -62,7 +62,7 @@ const TimelineDemo = ({ items, onItemClick }) => {
               style={{ bottom: `${position}%` }}
             >
               <div className="timeline-point">
-                <span className="timeline-year"><strong>{item.year}</strong> {item.shortTitle || item.title}</span>
+                <span className="timeline-year"><strong>{item.year}</strong> {item.title || item.shortTitle}</span>
               </div>
              {/*} <div className="timeline-content">
                 <span className="timeline-label">{item.shortTitle || item.title}</span>
@@ -71,9 +71,6 @@ const TimelineDemo = ({ items, onItemClick }) => {
           );
         })}
 
-       <div className="timeline-today">
-          <span>2026 г.</span>
-        </div>
 
 
         {/* Метка "0" (наше время) */}

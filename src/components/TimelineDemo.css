@@ -7,7 +7,7 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   display: flex;
   flex-direction: column;
-  height: 98vh;
+  height: 1098vh;
 }
 
 .timeline-title {
@@ -56,8 +56,8 @@
 
 /* Точка */
 .timeline-point {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #b2bec3;
   border: 2px solid white;
@@ -108,7 +108,7 @@
 }
 
 .timeline-label {
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 500;
   color: #2c3132;
   white-space: nowrap;
@@ -177,7 +177,7 @@
   margin-top: 20px;
   transition: all 0.3s ease;
   animation: fadeIn 0.4s ease;
-  max-height: 50vh;
+  min-height: 80vh;
 }
 
 @keyframes fadeIn {
