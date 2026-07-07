@@ -11,12 +11,15 @@
 }
 
 .timeline-title {
-  text-align: start;
-  font-size: 24px;
+  text-align: center;
+  font-size: 12px;
   font-weight: 700;
   color: #2d3436;
-  margin-bottom: 20px;
+  padding: 0;
+  margin: 0 0 0 18px;
+  background-color: #b2bec3;
   flex-shrink: 0;
+  z-index: 1000;
 }
 
 /* Контейнер с линейкой */
@@ -25,7 +28,7 @@
   width: 200px; /* Фиксированная ширина 60px */
   height: 98%; /* Растягиваем на всю высоту */
   min-height: 500px;
-  margin: 5px auto;
+  margin: 26px auto;
   flex: 1;
 }
 
@@ -84,11 +87,11 @@
   bottom: 0;
   left: 10%;
   transform: translateY(15%);
-  font-size: 11px;
+  font-size: 8px;
   font-weight: 600;
-  color: #636e72;
+  color: #1b1c1d;
   white-space: nowrap;
-
+  overflow-x:hidden;
   padding: 0 20px;
   border-radius: 4px;
   opacity: 0.7;
@@ -108,7 +111,7 @@
 }
 
 .timeline-label {
-  font-size: 8px;
+  font-size: 6px;
   font-weight: 500;
   color: #2c3132;
   white-space: nowrap;

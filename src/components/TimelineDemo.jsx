@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import './TimelineDemo.css';
 
 const TimelineDemo = ({ items, onItemClick, title }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   // Парсим год в число
   const parseYear = (yearStr) => {
@@ -14,20 +14,6 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
     return isNaN(num) ? 0 : num;
   };
 
-  // Вычисляем пропорциональные позиции (0% = самая ранняя дата, 100% = самая поздняя)
-  const positions = useMemo(() => {
-    const years = items.map(item => parseYear(item.year));
-    const minYear = Math.min(...years);
-    const maxYear = 2026;
-    const range = maxYear - minYear || 1;
-
-    return items.map((item) => {
-      const year = parseYear(item.year);
-      // Инвертируем, чтобы 0 был внизу: (1 - (year - minYear) / range) * 100
-      return ((year - minYear) / range) * 100;
-    });
-  }, [items]);
-
   // Сортируем события по году (для правильного отображения снизу вверх)
   const sortedItems = useMemo(() => {
     return [...items]
@@ -36,12 +22,13 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
   }, [items]);
 
   const handleItemClick = (event) => {
-    onItemClick(event);
+    setActiveIndex(event.index)
+    onItemClick(event)
   };
 
   return (
     <div className="timeline-wrapper">
-      <h4>{title}</h4>
+      <div className="timeline-title">{title}</div>
       <div className="timeline-container">
         {/* Вертикальная линия */}
         <div className="timeline-line"></div>
