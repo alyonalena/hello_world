@@ -4870,6 +4870,7 @@ function App() {
         open={activeEvent} 
         onOk={handleOk}
         onCancel={handleCancel}
+        centered
       >
           {activeEvent && (
             <div>
