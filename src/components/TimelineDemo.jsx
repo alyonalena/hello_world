@@ -3,7 +3,7 @@ import './TimelineDemo.css';
 
 const TimelineDemo = ({ items, onItemClick, title }) => {
   const [activeIndex, setActiveIndex] = useState(null);
-
+console.info('RENDERING '+ title)
   // Парсим год в число
   const parseYear = (yearStr) => {
     const cleaned = yearStr
@@ -36,7 +36,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
         {/* Метки событий */}
         {sortedItems.map((item, idx) => {
           const year = parseYear(item.year);
-          const minYear = 0;
+          const minYear = -2400;
           const maxYear = 2026;
           const range = maxYear - minYear || 1;
           const position = ((year - minYear) / range) * 100;
@@ -49,7 +49,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
               style={{ bottom: `${position}%` }}
             >
               <div className="timeline-point">
-                <span className="timeline-year"><strong>{item.year}</strong> {item.title || item.shortTitle}</span>
+                <span className="timeline-year"><strong>{Number(item.year) > 0 ? `${item.year} г.`: `${item.year} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle}</span>
               </div>
              {/*} <div className="timeline-content">
                 <span className="timeline-label">{item.shortTitle || item.title}</span>
@@ -58,12 +58,10 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
           );
         })}
 
-
-
-        {/* Метка "0" (наше время) */}
+        {/* Метка "0" (наше время) 
         <div className="timeline-zero">
           <span>0 г.</span>
-        </div>
+        </div>*/}
       </div>
 
     </div>
