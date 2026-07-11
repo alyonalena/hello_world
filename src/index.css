@@ -1,5 +1,5 @@
 html {
-  background-color: #F8FDFF;
+  background-color: #6bacc5;
 }
 :root {
   --text: #6b6375;
@@ -33,7 +33,7 @@ html {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: ligth) {
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
