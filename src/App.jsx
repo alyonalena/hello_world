@@ -4943,7 +4943,7 @@ console.info(modalPosition)
       className="eras"
       style={{
         height: '120px',
-        top: '380px',
+        top: '500px',
         backgroundColor: '#947fff'
       }}
     >
