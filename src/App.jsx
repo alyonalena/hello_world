@@ -4919,7 +4919,6 @@ function App() {
 console.info(modalPosition)
   return (
     <>
-
     <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
     <div
       className="eras" 
@@ -4979,7 +4978,9 @@ console.info(modalPosition)
         <TimelineDemo items={psychologyEvents} onItemClick={onItemClick} title={'Биология'}/>
       {/*
       */}
-      <Modal 
+     
+    </div>
+    <Modal 
         title={<span className="card-year">{activeEvent?.year} г.</span>}
         open={activeEvent} 
         onOk={handleOk}
@@ -4997,20 +4998,12 @@ console.info(modalPosition)
           style: { display: 'none' },
         }}
         style={{
-          zIndex: 1500,
-          top: `${modalPosition-200}px`,
-          left: '0',
+          position: 'absolute',
+          zIndex: 2500,
+          top: 20,
+          left: 20,
         }}
-        styles={{
-          content: {
-            height: '90vh',
-            borderRadius: 0,
-          },
-          body: {
-            overflowY: 'auto',
-            height: 'calc(90vh - 110px)', // Adjust based on your header/footer heights
-          }
-        }}
+
       >
         {activeEvent && (
           <div>
@@ -5036,7 +5029,6 @@ console.info(modalPosition)
           </div>
         )}
       </Modal>
-    </div>
     </>
   );
 }

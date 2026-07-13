@@ -128,3 +128,8 @@ code {
   left: 0;
   z-index: 1200;
 }
+
+.ant-modal-css-var {
+  position: absolute;
+  z-index: 1600;
+}
