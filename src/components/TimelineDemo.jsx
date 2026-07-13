@@ -21,10 +21,15 @@ console.info('RENDERING '+ title)
       .sort((a, b) => a.sortYear - b.sortYear);
   }, [items]);
 
-  const handleItemClick = (event) => {
+  const handleItemClick = (event, position) => {
     setActiveIndex(event.index)
-    onItemClick(event)
+    onItemClick(event, position)
+    console.info(position)
   };
+
+  const minYear = -2400;
+  const maxYear = 2026;
+  const range = maxYear - minYear || 1;
 
   return (
     <div className="timeline-wrapper">
@@ -36,16 +41,13 @@ console.info('RENDERING '+ title)
         {/* Метки событий */}
         {sortedItems.map((item, idx) => {
           const year = parseYear(item.year);
-          const minYear = -2400;
-          const maxYear = 2026;
-          const range = maxYear - minYear || 1;
           const position = ((year - minYear) / range) * 100;
 
           return (
             <div
               key={idx}
               className={`timeline-item ${activeIndex === item.index ? 'active' : ''}`}
-              onClick={() => handleItemClick(item)}
+              onClick={() => handleItemClick(item, position)}
               style={{ bottom: `${position}%` }}
             >
               <div className="timeline-point">

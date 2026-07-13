@@ -4697,30 +4697,285 @@ const economicsEvents = [
   }
 ];
 
+const culturalEras = [
+  // ========== ДРЕВНОСТЬ И ПЕРВОБЫТНОСТЬ ==========
+  {
+    id: "paleolithic",
+    title: "Палеолит (Древний каменный век)",
+    category: "cultural_era",
+    startYear: -2500000,
+    endYear: -10000,
+    color: "#8D6E63",
+    description: "Период, охватывающий более 99% истории человечества. Люди жили небольшими группами охотников-собирателей, использовали каменные орудия, овладели огнём и создали первые произведения искусства (пещерная живопись, фигурки Венеры). Зарождение языка, ритуалов и социальных структур.",
+    tags: ["prehistory", "stone_age", "hunters_gatherers"]
+  },
+  {
+    id: "neolithic",
+    title: "Неолит (Новый каменный век)",
+    category: "cultural_era",
+    startYear: -10000,
+    endYear: -3000,
+    color: "#A1887F",
+    description: "Период, когда произошла неолитическая революция — переход от присваивающего хозяйства (охота и собирательство) к производящему (земледелие и скотоводство). Появление первых постоянных поселений, керамики, ткачества и зачаточных форм религии. Начало цивилизации.",
+    tags: ["prehistory", "neolithic_revolution", "agriculture"]
+  },
+  {
+    id: "bronze_age",
+    title: "Бронзовый век",
+    category: "cultural_era",
+    startYear: -3000,
+    endYear: -1200,
+    color: "#BCAAA4",
+    description: "Эпоха, когда люди начали использовать бронзу (сплав меди и олова) для орудий и оружия. Возникли первые крупные цивилизации: Шумер, Египет, Индская цивилизация, Крит. Появились письменность, города, государства, законы (Хаммурапи) и первые мифологические системы.",
+    tags: ["ancient", "civilization", "bronze_age"]
+  },
+  {
+    id: "iron_age",
+    title: "Железный век",
+    category: "cultural_era",
+    startYear: -1200,
+    endYear: -500,
+    color: "#D7CCC8",
+    description: "Освоение железа привело к демократизации оружия и орудий труда, что способствовало росту народонаселения и военных конфликтов. В этот период расцветают греческие полисы, формируется Ветхий Завет, возникают великие империи (Ассирия, Персия).",
+    tags: ["ancient", "iron_age", "rise_of_empires"]
+  },
+
+  // ========== АНТИЧНОСТЬ ==========
+  {
+    id: "classical_antiquity",
+    title: "Классическая античность",
+    category: "cultural_era",
+    startYear: -500,
+    endYear: 476,
+    color: "#B3B8B0",
+    description: "Время расцвета Греции (Афинская демократия, философия Сократа, Платона, Аристотеля, театр, олимпийские игры) и Рима (республика, империя, римское право, инженерия, распространение христианства). Это основа западной цивилизации, науки, искусства и политической мысли.",
+    tags: ["ancient", "greece", "rome", "philosophy"]
+  },
+  {
+    id: "hellenism",
+    title: "Эллинизм",
+    category: "cultural_era",
+    startYear: -323,
+    endYear: -30,
+    color: "#C5C0B0",
+    description: "Период после смерти Александра Македонского, когда греческая культура распространилась на Восток, смешавшись с местными традициями. Возникли эллинистические государства (Птолемеи, Селевкиды), расцвели науки (Евклид, Архимед) и философские школы (стоики, эпикурейцы).",
+    tags: ["ancient", "greece", "hellenism"]
+  },
+  {
+    id: "roman_empire",
+    title: "Римская империя",
+    category: "cultural_era",
+    startYear: -27,
+    endYear: 476,
+    color: "#A8A59C",
+    description: "Эпоха расцвета и упадка Рима — от принципата Августа до падения Западной Римской империи. Мир (Pax Romana), грандиозное строительство (акведуки, дороги, Колизей), латинская литература (Вергилий, Овидий), римское право и становление христианства как государственной религии.",
+    tags: ["ancient", "rome", "empire", "christianity"]
+  },
+
+  // ========== СРЕДНЕВЕКОВЬЕ ==========
+  {
+    id: "early_middle_ages",
+    title: "Раннее Средневековье (Тёмные века)",
+    category: "cultural_era",
+    startYear: 476,
+    endYear: 1000,
+    color: "#9E9E9E",
+    description: "Падение Западной Римской империи, варварские королевства, византийское искусство, романский стиль. В этот период формируются современные европейские народы (франки, англосаксы, славяне), распространяется ислам и начинается Каролингское возрождение.",
+    tags: ["medieval", "dark_ages", "barbarian", "byzantium"]
+  },
+  {
+    id: "high_middle_ages",
+    title: "Высокое Средневековье",
+    category: "cultural_era",
+    startYear: 1000,
+    endYear: 1300,
+    color: "#BDBDBD",
+    description: "Расцвет феодализма, крестовые походы, готическая архитектура (соборы Парижа, Кёльна, Шартра). Возникли университеты, схоластика (Фома Аквинский), рыцарская культура, трубадуры. Складываются национальные государства (Франция, Англия, Испания).",
+    tags: ["medieval", "gothic", "crusades", "scholasticism"]
+  },
+  {
+    id: "late_middle_ages",
+    title: "Позднее Средневековье (XIV–XV вв.)",
+    category: "cultural_era",
+    startYear: 1300,
+    endYear: 1500,
+    color: "#CFD8DC",
+    description: "Кризис феодализма: Столетняя война, чума (Чёрная смерть), восстания (Жакерия, Уот Тайлер). В то же время — расцвет городской культуры, Данте, Чосер, ранний гуманизм в Италии (Петрарка, Боккаччо). Предтеча Возрождения.",
+    tags: ["medieval", "crisis", "plague", "humanism"]
+  },
+
+  // ========== РЕНЕССАНС И РЕФОРМАЦИЯ ==========
+  {
+    id: "renaissance",
+    title: "Ренессанс (Возрождение)",
+    category: "cultural_era",
+    startYear: 1400,
+    endYear: 1520,
+    color: "#F5D6B3",
+    description: "Возврат к античным идеалам в искусстве, науке и философии. Леонардо, Микеланджело, Рафаэль, Дюрер. Открытие перспективы, анатомии, книгопечатание (Гутенберг). Гуманизм, переворот в астрономии (Коперник), географические открытия.",
+    tags: ["renaissance", "art", "humanism", "science"]
+  },
+  {
+    id: "mannerism",
+    title: "Маньеризм и Барокко",
+    category: "cultural_era",
+    startYear: 1520,
+    endYear: 1700,
+    color: "#E6C8A0",
+    description: "От изящной гармонии Ренессанса к драматизму и экспрессии. Барокко — архитектура (Бернини), живопись (Караваджо, Рубенс, Рембрандт), музыка (Бах, Гендель). Контрреформация, религиозные войны, рождение оперы, научная революция (Галилей, Ньютон).",
+    tags: ["baroque", "art", "counter_reformation", "music"]
+  },
+
+  // ========== ПРОСВЕЩЕНИЕ ==========
+  {
+    id: "enlightenment",
+    title: "Эпоха Просвещения (XVIII век)",
+    category: "cultural_era",
+    startYear: 1685,
+    endYear: 1815,
+    color: "#B3D4D0",
+    description: "Век разума, науки и прогресса. Вольтер, Руссо, Кант, Дидро — энциклопедисты. Критика религии и абсолютизма, естественные права, разделение властей. Революции (Американская, Французская), промышленная революция в Англии, расцвет музыки (Моцарт, Бетховен).",
+    tags: ["enlightenment", "reason", "revolution", "music"]
+  },
+
+  // ========== XIX ВЕК ==========
+  {
+    id: "romanticism",
+    title: "Романтизм",
+    category: "cultural_era",
+    startYear: 1790,
+    endYear: 1850,
+    color: "#D4B8A8",
+    description: "Культ чувств, эмоций, природы и свободы. Бунт против рационализма. Литература (Байрон, Гюго, Гофман), живопись (Делакруа, Тёрнер), музыка (Шуберт, Шопен, Вагнер). Подъём национальных движений (Греция, Италия, славяне).",
+    tags: ["romanticism", "art", "literature", "nationalism"]
+  },
+  {
+    id: "realism_naturalism",
+    title: "Реализм и Натурализм",
+    category: "cultural_era",
+    startYear: 1840,
+    endYear: 1890,
+    color: "#A8B5A0",
+    description: "Обращение к повседневной жизни, социальным проблемам и научной точности. Литература (Толстой, Достоевский, Флобер, Диккенс), живопись (Курбе, Милле). Индустриализация, урбанизация, распространение марксизма.",
+    tags: ["realism", "literature", "industrialization", "socialism"]
+  },
+  {
+    id: "impressionism",
+    title: "Импрессионизм и Постимпрессионизм",
+    category: "cultural_era",
+    startYear: 1860,
+    endYear: 1910,
+    color: "#D4D0C8",
+    description: "Восстание против академической живописи. Моне, Ренуар, Дега — игра света и цвета. Ван Гог, Сезанн, Гоген — субъективное видение. Литература — натурализм, поэзия символистов (Бодлер, Верлен).",
+    tags: ["art", "impressionism", "symbolism", "literature"]
+  },
+
+  // ========== XX ВЕК ==========
+  {
+    id: "modernism",
+    title: "Модернизм",
+    category: "cultural_era",
+    startYear: 1900,
+    endYear: 1945,
+    color: "#B8B0A8",
+    description: "Разрыв с традициями, поиск новых форм. Фовизм, кубизм, сюрреализм, абстракционизм (Пикассо, Дали, Кандинский). Литература (Джойс, Кафка, Пруст), архитектура (Функционализм, Баухаус), музыка (Стравинский, Шёнберг). Мировые войны и научные революции.",
+    tags: ["modernism", "art", "literature", "architecture"]
+  },
+  {
+    id: "postmodernism",
+    title: "Постмодернизм",
+    category: "cultural_era",
+    startYear: 1960,
+    endYear: 2000,
+    color: "#A09890",
+    description: "Ирония, цитатность, смешение стилей, отрицание единого смысла. Фуко, Деррида, Бодрийяр — деконструкция и симулякры. Поп-арт, постмодернистская литература (Эко, Паланик), компьютерная культура, начало интернета.",
+    tags: ["postmodernism", "philosophy", "art", "digital"]
+  },
+
+  // ========== XXI ВЕК ==========
+  {
+    id: "digital_era",
+    title: "Цифровая эра (Информационное общество)",
+    category: "cultural_era",
+    startYear: 2000,
+    endYear: 2025,
+    color: "#7A8A8A",
+    description: "Глобализация, интернет, социальные сети, искусственный интеллект, биотехнологии. Новые формы искусства (видеоигры, NFT, интерактивные инсталляции). Изменение работы, образования, коммуникаций. Климатическая повестка и социальные движения.",
+    tags: ["digital", "ai", "internet", "globalization"]
+  }
+];
+
 function App() {
   const [ activeEvent, setActiveEvent ] = useState(null)
+  const [ modalPosition, setModalPosition ] = useState(0)
 
   const handleOk = () => setActiveEvent(null)
   const handleCancel = () => setActiveEvent(null)
 
+  const onItemClick = (item, position) => {
+    setActiveEvent(item)
+    setModalPosition(position)
+  }
+console.info(modalPosition)
   return (
+    <>
+    <div
+      className="eras" 
+      style={{
+        height: '100px',
+        top: '80px',
+        backgroundColor: '#7fffd4'
+      }}
+    >
+        <h1>Цифровая эра</h1>   
+    </div>
+    <div 
+      className="eras"
+      style={{
+        height: '200px',
+        top: '240px',
+        backgroundColor: '#7fddff'
+      }}
+    >
+        <h1>Постмодернизм</h1>   
+    </div>
+    <div 
+      className="eras"
+      style={{
+        height: '120px',
+        top: '380px',
+        backgroundColor: '#947fff'
+      }}
+    >
+        <h1>Модернизм</h1>   
+    </div>
+    <div 
+      className="eras"
+      style={{
+        height: '100px',
+        top: '680px',
+        backgroundColor: '#c17fff'
+      }}
+    >
+        <h1>Импрессионизм и Постимпрессионизм</h1>   
+    </div>
     <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
       {/*<TimelineDemo items={historical_events} onItemClick={setActiveEvent}/>*/}
-        <TimelineDemo items={philosophyEvents} onItemClick={setActiveEvent} title={'Философия'}/>
-        <TimelineDemo items={warEvents} onItemClick={setActiveEvent} title={'Войны'}/>
-        <TimelineDemo items={rightsEvents} onItemClick={setActiveEvent} title={'Права и свободы'}/>
-        <TimelineDemo items={internationalLawEvents} onItemClick={setActiveEvent} title={'Международное право'}/>
-        <TimelineDemo items={economicsEvents} onItemClick={setActiveEvent} title={'Экономика'}/>
-        <TimelineDemo items={cityEvents} onItemClick={setActiveEvent} title={'Основание городов'}/>
-        <TimelineDemo items={conceptEvents} onItemClick={setActiveEvent} title={'Концепции'}/>
-        <TimelineDemo items={literatureEvents} onItemClick={setActiveEvent} title={'Литература'}/>      
-        <TimelineDemo items={religionEvents} onItemClick={setActiveEvent} title={'Религия'}/>
-        <TimelineDemo items={spaceEvents} onItemClick={setActiveEvent} title={'Космос'}/>
-        <TimelineDemo items={itEvents} onItemClick={setActiveEvent} title={'ИТ'}/>
-        <TimelineDemo items={biologyEvents} onItemClick={setActiveEvent} title={'Науки о человеке'}/>
-        <TimelineDemo items={physicsEvents} onItemClick={setActiveEvent} title={'Физика'}/>
-        <TimelineDemo items={chemistryEvents} onItemClick={setActiveEvent} title={'Химия'}/>
-        <TimelineDemo items={psychologyEvents} onItemClick={setActiveEvent} title={'Биология'}/>
+        <TimelineDemo items={philosophyEvents} onItemClick={onItemClick} title={'Философия'}/>
+        <TimelineDemo items={warEvents} onItemClick={onItemClick} title={'Войны'}/>
+        <TimelineDemo items={rightsEvents} onItemClick={onItemClick} title={'Права и свободы'}/>
+        <TimelineDemo items={internationalLawEvents} onItemClick={onItemClick} title={'Международное право'}/>
+        <TimelineDemo items={economicsEvents} onItemClick={onItemClick} title={'Экономика'}/>
+        <TimelineDemo items={cityEvents} onItemClick={onItemClick} title={'Основание городов'}/>
+        <TimelineDemo items={conceptEvents} onItemClick={onItemClick} title={'Концепции'}/>
+        <TimelineDemo items={literatureEvents} onItemClick={onItemClick} title={'Литература'}/>      
+        <TimelineDemo items={religionEvents} onItemClick={onItemClick} title={'Религия'}/>
+        <TimelineDemo items={spaceEvents} onItemClick={onItemClick} title={'Космос'}/>
+        <TimelineDemo items={itEvents} onItemClick={onItemClick} title={'ИТ'}/>
+        <TimelineDemo items={biologyEvents} onItemClick={onItemClick} title={'Науки о человеке'}/>
+        <TimelineDemo items={physicsEvents} onItemClick={onItemClick} title={'Физика'}/>
+        <TimelineDemo items={chemistryEvents} onItemClick={onItemClick} title={'Химия'}/>
+        <TimelineDemo items={psychologyEvents} onItemClick={onItemClick} title={'Биология'}/>
       {/*
       */}
       <Modal 
@@ -4741,9 +4996,9 @@ function App() {
           style: { display: 'none' },
         }}
         style={{
-          top: {},
-          maxWidth: '100%',
-          margin: '20px',
+          zIndex: 1300,
+          top: `${modalPosition-200}px`,
+          left: '0',
         }}
         styles={{
           content: {
@@ -4781,6 +5036,7 @@ function App() {
         )}
       </Modal>
     </div>
+    </>
   );
 }
 
