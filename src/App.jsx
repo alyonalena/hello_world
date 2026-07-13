@@ -4699,7 +4699,7 @@ const economicsEvents = [
 
 const culturalEras = [
   // ========== ДРЕВНОСТЬ И ПЕРВОБЫТНОСТЬ ==========
-  {
+  /*{
     id: "paleolithic",
     title: "Палеолит (Древний каменный век)",
     category: "cultural_era",
@@ -4718,7 +4718,7 @@ const culturalEras = [
     color: "#A1887F",
     description: "Период, когда произошла неолитическая революция — переход от присваивающего хозяйства (охота и собирательство) к производящему (земледелие и скотоводство). Появление первых постоянных поселений, керамики, ткачества и зачаточных форм религии. Начало цивилизации.",
     tags: ["prehistory", "neolithic_revolution", "agriculture"]
-  },
+  },*/
   {
     id: "bronze_age",
     title: "Бронзовый век",
@@ -4829,7 +4829,7 @@ const culturalEras = [
   // ========== ПРОСВЕЩЕНИЕ ==========
   {
     id: "enlightenment",
-    title: "Эпоха Просвещения (XVIII век)",
+    title: "Эпоха Просвещения",
     category: "cultural_era",
     startYear: 1685,
     endYear: 1815,
@@ -4861,7 +4861,7 @@ const culturalEras = [
   },
   {
     id: "impressionism",
-    title: "Импрессионизм и Постимпрессионизм",
+    title: "Импрессионизм и постимпрессионизм",
     category: "cultural_era",
     startYear: 1860,
     endYear: 1910,
@@ -4882,6 +4882,16 @@ const culturalEras = [
     tags: ["modernism", "art", "literature", "architecture"]
   },
   {
+    id: "post_war_transition",
+    title: "Послевоенный переход (1945–1960)",
+    category: "cultural_era",
+    startYear: 1945,
+    endYear: 1960,
+    color: "#8E8E8E",
+    description: "Период восстановления после Второй мировой войны, начало Холодной войны, деколонизация, экзистенциализм в философии (Сартр, Камю), абстрактный экспрессионизм в искусстве (Поллок), джаз и рок-н-ролл. Зарождение массовой культуры и телевидения.",
+    tags: ["post_war", "cold_war", "existentialism", "abstract_expressionism"]
+  },
+  {
     id: "postmodernism",
     title: "Постмодернизм",
     category: "cultural_era",
@@ -4891,6 +4901,7 @@ const culturalEras = [
     description: "Ирония, цитатность, смешение стилей, отрицание единого смысла. Фуко, Деррида, Бодрийяр — деконструкция и симулякры. Поп-арт, постмодернистская литература (Эко, Паланик), компьютерная культура, начало интернета.",
     tags: ["postmodernism", "philosophy", "art", "digital"]
   },
+  
 
   // ========== XXI ВЕК ==========
   {
@@ -4916,50 +4927,43 @@ function App() {
     setActiveEvent(item)
     setModalPosition(position)
   }
-console.info(modalPosition)
+
+  const minYear = -2400;
+  const maxYear = 2026;
+  const range = maxYear - minYear || 1;
+
   return (
-    <>
+    <>    
     <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
-    <div
-      className="eras" 
-      style={{
-        height: '100px',
-        top: '80px',
-        backgroundColor: '#7fffd4'
-      }}
-    >
-        <h1>Цифровая эра</h1>   
-    </div>
-    <div 
-      className="eras"
-      style={{
-        height: '200px',
-        top: '240px',
-        backgroundColor: '#7fddff'
-      }}
-    >
-        <h1>Постмодернизм</h1>   
-    </div>
-    <div 
-      className="eras"
-      style={{
-        height: '120px',
-        top: '500px',
-        backgroundColor: '#947fff'
-      }}
-    >
-        <h1>Модернизм</h1>   
-    </div>
-    <div 
-      className="eras"
-      style={{
-        height: '100px',
-        top: '680px',
-        backgroundColor: '#c17fff'
-      }}
-    >
-        <h1>Импрессионизм и Постимпрессионизм</h1>   
-    </div>
+      <div className="erasBlock">
+      {
+        culturalEras.map((item, index) =>  {
+          const height = (Math.abs(item.startYear-item.endYear) / range) * 100
+          const position = ((item.endYear - minYear) / range) * 100
+
+          console.info(position)
+console.info(item.title)
+console.info(position)
+console.info(height)
+
+          return (
+            <div 
+              key={item.id}
+              className="era"
+              style={{
+                height: `${height}%`,
+                bottom: `${position}%` ,
+                backgroundColor: `#43c8da`,
+                background: 'linear-gradient(to top,rgb(184, 234, 240), #fff)'
+              }}
+            >
+              <h1>{item.startYear < 0 ? `${Math.abs(item.startYear)} г. до Н.Э.` : `${item.startYear} г.`}: {item.title}</h1>
+            </div>
+          )
+        }
+      )}
+
+      </div>
       {/*<TimelineDemo items={historical_events} onItemClick={setActiveEvent}/>*/}
         <TimelineDemo items={philosophyEvents} onItemClick={onItemClick} title={'Философия'}/>
         <TimelineDemo items={warEvents} onItemClick={onItemClick} title={'Войны'}/>

@@ -99,26 +99,34 @@ code {
   background: var(--code-bg);
 }
 
-
-.eras {
-  position: absolute;
-  display: flexbox;
-  top: 80px;
-  font-size: 8rem;
-  background-color: aquamarine;
-  opacity: 0.3;
-  z-index: 1000;
-  height: 800px;
-  text-align: start;
+.erasBlock {
   width: 100%;
-  padding: 30px 0px;
-  align-items: end;
+  max-width: 1200px;
+  margin: 85px 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  height: 3098vh;
+  z-index: 1300;
+  border: 1px solid red;
 }
 
-.eras h1 {
+.era {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  z-index: 2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 30px;
+}
+
+.era h1 {
   font-size: 5rem;
   font-weight: bold;
-  opacity: 0.5;
+  opacity: 0.1;
   color: black;
 }
 
