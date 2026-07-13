@@ -5000,7 +5000,7 @@ console.info(modalPosition)
         style={{
           position: 'absolute',
           zIndex: 2500,
-          top: 20,
+          top: `${modalPosition}px`,
           left: 20,
         }}
 
