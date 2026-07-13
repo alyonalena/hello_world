@@ -4919,6 +4919,8 @@ function App() {
 console.info(modalPosition)
   return (
     <>
+
+    <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
     <div
       className="eras" 
       style={{
@@ -4959,7 +4961,6 @@ console.info(modalPosition)
     >
         <h1>Импрессионизм и Постимпрессионизм</h1>   
     </div>
-    <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
       {/*<TimelineDemo items={historical_events} onItemClick={setActiveEvent}/>*/}
         <TimelineDemo items={philosophyEvents} onItemClick={onItemClick} title={'Философия'}/>
         <TimelineDemo items={warEvents} onItemClick={onItemClick} title={'Войны'}/>
@@ -4996,7 +4997,7 @@ console.info(modalPosition)
           style: { display: 'none' },
         }}
         style={{
-          zIndex: 1300,
+          zIndex: 1500,
           top: `${modalPosition-200}px`,
           left: '0',
         }}
