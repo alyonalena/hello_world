@@ -4723,7 +4723,7 @@ const culturalEras = [
     id: "bronze_age",
     title: "Бронзовый век",
     category: "cultural_era",
-    startYear: -3000,
+    startYear: -2400,
     endYear: -1200,
     color: "#BCAAA4",
     description: "Эпоха, когда люди начали использовать бронзу (сплав меди и олова) для орудий и оружия. Возникли первые крупные цивилизации: Шумер, Египет, Индская цивилизация, Крит. Появились письменность, города, государства, законы (Хаммурапи) и первые мифологические системы.",
@@ -4939,12 +4939,11 @@ function App() {
       {
         culturalEras.map((item, index) =>  {
           const height = (Math.abs(item.startYear-item.endYear) / range) * 100
-          const position = ((item.endYear - minYear) / range) * 100
+          const position = ((item.startYear - minYear) / range) * 100
 
+          console.info(item.title)
+          console.info(height)
           console.info(position)
-console.info(item.title)
-console.info(position)
-console.info(height)
 
           return (
             <div 
