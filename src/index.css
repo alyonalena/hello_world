@@ -33,7 +33,7 @@ html {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
@@ -55,7 +55,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #dff3f2;
+  background-color: #F8FDFF;
 }
 
 #root {

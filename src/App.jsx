@@ -4741,7 +4741,7 @@ function App() {
           style: { display: 'none' },
         }}
         style={{
-          top: 0,
+          top: {},
           maxWidth: '100%',
           margin: '20px',
         }}
@@ -4756,29 +4756,29 @@ function App() {
           }
         }}
       >
-          {activeEvent && (
-            <div>
-              <div className="card-header">
-                <h3 className="card-title">{activeEvent.title}</h3>                
-              </div>
-              <br/>
-              <p className="card-description">{activeEvent.description}</p>
-              <br/>
-              {activeEvent.tags && (
-                <div className="card-tags">
-                  {activeEvent.tags.map((tag, i) => (
-                    <span key={i} className="tag">{tag}</span>
-                  ))}
-                </div>
-              )}
-              {activeEvent.casualties && (
-                <div className="card-casualties">
-                  💀 Потери: {activeEvent.casualties}
-                </div>
-              )}
-              <br/>
+        {activeEvent && (
+          <div>
+            <div className="card-header">
+              <h3 className="card-title">{activeEvent.title}</h3>                
             </div>
-          )}
+            <br/>
+            <p className="card-description">{activeEvent.description}</p>
+            <br/>
+            {activeEvent.tags && (
+              <div className="card-tags">
+                {activeEvent.tags.map((tag, i) => (
+                  <span key={i} className="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            {activeEvent.casualties && (
+              <div className="card-casualties">
+                💀 Потери: {activeEvent.casualties}
+              </div>
+            )}
+            <br/>
+          </div>
+        )}
       </Modal>
     </div>
   );
