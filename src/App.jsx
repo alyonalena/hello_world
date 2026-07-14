@@ -4941,10 +4941,7 @@ function App() {
           const height = (Math.abs(item.startYear-item.endYear) / range) * 100
           const position = ((item.startYear - minYear) / range) * 100
 
-          console.info(item.title)
-          console.info(height)
-          console.info(position)
-
+          console.info(modalPosition)
           return (
             <div 
               key={item.id}
@@ -4971,10 +4968,10 @@ function App() {
         <TimelineDemo items={economicsEvents} onItemClick={onItemClick} title={'Экономика'}/>
         <TimelineDemo items={cityEvents} onItemClick={onItemClick} title={'Основание городов'}/>
         <TimelineDemo items={conceptEvents} onItemClick={onItemClick} title={'Концепции'}/>
-        <TimelineDemo items={literatureEvents} onItemClick={onItemClick} title={'Литература'}/>      
         <TimelineDemo items={religionEvents} onItemClick={onItemClick} title={'Религия'}/>
         <TimelineDemo items={spaceEvents} onItemClick={onItemClick} title={'Космос'}/>
         <TimelineDemo items={itEvents} onItemClick={onItemClick} title={'ИТ'}/>
+        <TimelineDemo items={literatureEvents} onItemClick={onItemClick} title={'Литература'}/>  
         <TimelineDemo items={biologyEvents} onItemClick={onItemClick} title={'Науки о человеке'}/>
         <TimelineDemo items={physicsEvents} onItemClick={onItemClick} title={'Физика'}/>
         <TimelineDemo items={chemistryEvents} onItemClick={onItemClick} title={'Химия'}/>
@@ -4995,6 +4992,9 @@ function App() {
             borderRadius: '16px'
           },
           type: 'primary',
+        }}
+        style={{
+          top: modalPosition
         }}
         cancelButtonProps={{
           style: { display: 'none' },
