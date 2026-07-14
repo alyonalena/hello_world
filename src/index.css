@@ -1,12 +1,5 @@
 html {
   background-color: #F8FDFF;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    #ff5722 0px,
-    #ff5722 20px,
-    #ffffff 20px,
-    #ffffff 40px
-  );
 }
 :root {
   --text: #6b6375;
@@ -46,7 +39,6 @@ body {
 }
 
 #root {
-
   margin: 0 auto;
   text-align: center;
   min-height: 100svh;
@@ -135,4 +127,11 @@ code {
   top: 0;
   left: 0;
   z-index: 1200;
+}
+
+.ant-modal-root {
+  z-index: 1500;
+  position: fixed;
+  top: 20px;
+  right: 20px,
 }

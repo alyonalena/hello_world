@@ -4956,7 +4956,7 @@ function App() {
                 background: 'linear-gradient(to top,rgb(184, 234, 240), #fff)'
               }}
             >
-              <h1>{item.startYear < 0 ? `${Math.abs(item.startYear)} г. до Н.Э.` : `${item.startYear} г.`}: {item.title}</h1>
+              <h1>~{item.startYear < 0 ? `${Math.abs(item.startYear)} г. до Н.Э.` : `${item.startYear} г.`}: {item.title}</h1>
             </div>
           )
         }
@@ -4980,8 +4980,7 @@ function App() {
         <TimelineDemo items={chemistryEvents} onItemClick={onItemClick} title={'Химия'}/>
         <TimelineDemo items={psychologyEvents} onItemClick={onItemClick} title={'Биология'}/>
       {/*
-      */}
-     
+      */}     
     </div>
     <Modal 
         title={<span className="card-year">{activeEvent?.year} г.</span>}
@@ -4999,12 +4998,6 @@ function App() {
         }}
         cancelButtonProps={{
           style: { display: 'none' },
-        }}
-        style={{
-          position: 'absolute',
-          zIndex: 2500,
-          top: `${modalPosition}px`,
-          left: 20,
         }}
 
       >
