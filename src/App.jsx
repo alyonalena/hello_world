@@ -4918,7 +4918,9 @@ const culturalEras = [
 
 function App() {
   const [ activeEvent, setActiveEvent ] = useState(null)
-  const [ modalPosition, setModalPosition ] = useState(0)
+  const [ modalPositionY, setModalPositionY ] = useState(0)
+  const [ modalPositionX, setModalPositionX ] = useState(0)
+
   const [ scale, setScale ] = useState(1)
   const modalRef = useRef(null)
 
@@ -4932,9 +4934,10 @@ function App() {
     }
   }
 
-  const onItemClick = (item, position) => {
+  const onItemClick = (item, positionY, positionX) => {
     setActiveEvent(item)
-    setModalPosition(position)
+    setModalPositionY(positionY)
+    setModalPositionY(positionX)
   }
 
   // Функция для расчета реального зума устройства
@@ -4967,8 +4970,7 @@ function App() {
   const range = maxYear - minYear || 1
 
   return (
-    <>    
-    <div className='fixed-element'>INFO</div>
+    <>
     <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
       <div className="erasBlock">
       {
@@ -4976,7 +4978,7 @@ function App() {
           const height = (Math.abs(item.startYear-item.endYear) / range) * 100
           const position = ((item.startYear - minYear) / range) * 100
 
-          console.info(modalPosition)
+
           return (
             <div 
               key={item.id}
@@ -4994,33 +4996,33 @@ function App() {
         }
       )}
 
+
       </div>
       {/*<TimelineDemo items={historical_events} onItemClick={setActiveEvent}/>*/}
-        <TimelineDemo items={philosophyEvents} onItemClick={onItemClick} title={'Философия'}/>
-        <TimelineDemo items={warEvents} onItemClick={onItemClick} title={'Войны'}/>
-        <TimelineDemo items={rightsEvents} onItemClick={onItemClick} title={'Права и свободы'}/>
-        <TimelineDemo items={internationalLawEvents} onItemClick={onItemClick} title={'Международное право'}/>
-        <TimelineDemo items={economicsEvents} onItemClick={onItemClick} title={'Экономика'}/>
-        <TimelineDemo items={conceptEvents} onItemClick={onItemClick} title={'Концепции'}/>
-        <TimelineDemo items={religionEvents} onItemClick={onItemClick} title={'Религия'}/>
-        <TimelineDemo items={spaceEvents} onItemClick={onItemClick} title={'Космос'}/>
-        <TimelineDemo items={itEvents} onItemClick={onItemClick} title={'ИТ'}/>  
-        <TimelineDemo items={biologyEvents} onItemClick={onItemClick} title={'Науки о человеке'}/>
-        <TimelineDemo items={physicsEvents} onItemClick={onItemClick} title={'Физика'}/>
-        <TimelineDemo items={chemistryEvents} onItemClick={onItemClick} title={'Химия'}/>
-        <TimelineDemo items={psychologyEvents} onItemClick={onItemClick} title={'Биология'}/>
-        <TimelineDemo items={literatureEvents} onItemClick={onItemClick} title={'Литература'}/>
-        <TimelineDemo items={cityEvents} onItemClick={onItemClick} title={'Основание городов'}/>
+        <TimelineDemo items={philosophyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 1)} title={'Философия'}/>
+        <TimelineDemo items={warEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 2)} title={'Войны'}/>
+        <TimelineDemo items={rightsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 3)} title={'Права и свободы'}/>
+        <TimelineDemo items={internationalLawEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 4)} title={'Международное право'}/>
+        <TimelineDemo items={economicsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 5)} title={'Экономика'}/>
+        <TimelineDemo items={conceptEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 6)} title={'Концепции'}/>
+        <TimelineDemo items={religionEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 7)} title={'Религия'}/>
+        <TimelineDemo items={spaceEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 8)} title={'Космос'}/>
+        <TimelineDemo items={itEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 9)} title={'ИТ'}/>  
+        <TimelineDemo items={biologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 20)} title={'Науки о человеке'}/>
+        <TimelineDemo items={physicsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 11)} title={'Физика'}/>
+        <TimelineDemo items={chemistryEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 12)} title={'Химия'}/>
+        <TimelineDemo items={psychologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 13)} title={'Биология'}/>
+        <TimelineDemo items={literatureEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Литература'}/>
+        <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
       {/*
       */}     
       {/* Модальное окно (рендерится только если isOpen === true) */}
       {activeEvent && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
-        {/* Применяем инвертированный масштаб к контенту окна */}
         <div 
           className="modal-content" 
           ref={modalRef}
-          style={{ transform: `scale(${scale})`, top: `{modalPosition}px` }}
+          style={{ transform: `translateY(${100-modalPositionY}%) translateX(${modalPositionX*100}px`}}
         >
           <div className="card-header">
               <h3 className="card-title">{activeEvent.title}</h3>                
@@ -5045,8 +5047,7 @@ function App() {
             Закрыть
           </button>
         </div>
-      </div>
-        
+      </div>        
       )}
     </div>
     {/*<Modal 

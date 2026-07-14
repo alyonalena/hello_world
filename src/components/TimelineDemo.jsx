@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import './TimelineDemo.css';
+import React, { useState, useMemo } from 'react'
+import { Popover } from 'antd'
+import './TimelineDemo.css'
 
 const TimelineDemo = ({ items, onItemClick, title }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -44,16 +45,17 @@ console.info('RENDERING '+ title)
           const position = ((year - minYear) / range) * 100;
 
           return (
+            
             <div
               key={idx}
               className={`timeline-item ${activeIndex === item.index ? 'active' : ''}`}
               onClick={() => handleItemClick(item, position)}
               style={{ bottom: `${position}%` }}
             >
-              <div className="timeline-point">
-                <span className="timeline-year"><strong>{Number(item.year) > 0 ? `${item.year} г.`: `${item.year} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle}</span>
-              </div>
-             {/*} <div className="timeline-content">
+                <div className="timeline-point">
+                  <span className="timeline-year"><strong>{Number(item.year) > 0 ? `${item.year} г.`: `${item.year} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle}</span>
+                </div>       
+                {/*} <div className="timeline-content">
                 <span className="timeline-label">{item.shortTitle || item.title}</span>
               </div>*/}
             </div>
