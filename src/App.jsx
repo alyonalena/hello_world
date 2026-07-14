@@ -4923,6 +4923,15 @@ function App() {
   const handleOk = () => setActiveEvent(null)
   const handleCancel = () => setActiveEvent(null)
 
+
+  // Закрытие при клике на серое пространство вокруг окна
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains('modal-overlay')) {
+      closeModal();
+    }
+  };
+
+
   const onItemClick = (item, position) => {
     setActiveEvent(item)
     setModalPosition(position)
@@ -4934,6 +4943,7 @@ function App() {
 
   return (
     <>    
+    <div className='fixed-element'>INFO</div>
     <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
       <div className="erasBlock">
       {
@@ -4966,20 +4976,52 @@ function App() {
         <TimelineDemo items={rightsEvents} onItemClick={onItemClick} title={'Права и свободы'}/>
         <TimelineDemo items={internationalLawEvents} onItemClick={onItemClick} title={'Международное право'}/>
         <TimelineDemo items={economicsEvents} onItemClick={onItemClick} title={'Экономика'}/>
-        <TimelineDemo items={cityEvents} onItemClick={onItemClick} title={'Основание городов'}/>
         <TimelineDemo items={conceptEvents} onItemClick={onItemClick} title={'Концепции'}/>
         <TimelineDemo items={religionEvents} onItemClick={onItemClick} title={'Религия'}/>
         <TimelineDemo items={spaceEvents} onItemClick={onItemClick} title={'Космос'}/>
-        <TimelineDemo items={itEvents} onItemClick={onItemClick} title={'ИТ'}/>
-        <TimelineDemo items={literatureEvents} onItemClick={onItemClick} title={'Литература'}/>  
+        <TimelineDemo items={itEvents} onItemClick={onItemClick} title={'ИТ'}/>  
         <TimelineDemo items={biologyEvents} onItemClick={onItemClick} title={'Науки о человеке'}/>
         <TimelineDemo items={physicsEvents} onItemClick={onItemClick} title={'Физика'}/>
         <TimelineDemo items={chemistryEvents} onItemClick={onItemClick} title={'Химия'}/>
         <TimelineDemo items={psychologyEvents} onItemClick={onItemClick} title={'Биология'}/>
+        <TimelineDemo items={literatureEvents} onItemClick={onItemClick} title={'Литература'}/>
+        <TimelineDemo items={cityEvents} onItemClick={onItemClick} title={'Основание городов'}/>
       {/*
       */}     
+      {/* Модальное окно (рендерится только если isOpen === true) */}
+      {activeEvent && (
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+          <div className="modal-content">
+            <h3>Модальное окно на React</h3>
+            <div>
+            <div className="card-header">
+              <h3 className="card-title">{activeEvent.title}</h3>                
+            </div>
+            <br/>
+            <p className="card-description">{activeEvent.description}</p>
+            <br/>
+            {activeEvent.tags && (
+              <div className="card-tags">
+                {activeEvent.tags.map((tag, i) => (
+                  <span key={i} className="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            {activeEvent.casualties && (
+              <div className="card-casualties">
+                💀 Потери: {activeEvent.casualties}
+              </div>
+            )}
+            <br/>
+          </div>
+            <button className="close-btn" onClick={handleCancel}>
+              Ок
+            </button>
+          </div>
+        </div>
+      )}
     </div>
-    <Modal 
+    {/*<Modal 
         title={<span className="card-year">{activeEvent?.year} г.</span>}
         open={activeEvent} 
         getContainer={false}
@@ -5025,7 +5067,7 @@ function App() {
             <br/>
           </div>
         )}
-      </Modal>
+      </Modal>*/}
     </>
   );
 }

@@ -154,3 +154,58 @@ code {
   position: relative;
   max-height: 90vh; /* Чтобы очень высокое модальное окно не выходило за пределы */
 }
+
+.fixed-element {
+  position: sticky;
+  top: 20px; /* Сверху */
+  right: 20px; /* Справа */
+  z-index: 1000; /* Поверх остальных элементов */
+}
+
+/* Оверлей на весь экран (фиксированный) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  
+  /* Flexbox идеально держит центр при любом зуме */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Само модальное окно */
+.modal-content {
+  background: #ffffff;
+  color: #333333;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  
+  /* Защита от вылезания контента за экран при сильном масштабировании */
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto; 
+}
+
+/* Кнопка закрытия */
+.close-btn {
+  margin-top: 20px;
+  color: #f0edff;
+  background: #6c5ce7;
+  padding: 4px 12px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.close-btn:hover {
+  background-color: #0056b3;
+}
