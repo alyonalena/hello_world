@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import './App.css'
 import TimelineDemo from './components/TimelineDemo'
@@ -4919,27 +4919,52 @@ const culturalEras = [
 function App() {
   const [ activeEvent, setActiveEvent ] = useState(null)
   const [ modalPosition, setModalPosition ] = useState(0)
+  const [ scale, setScale ] = useState(1)
+  const modalRef = useRef(null)
 
   const handleOk = () => setActiveEvent(null)
   const handleCancel = () => setActiveEvent(null)
 
-
   // Закрытие при клике на серое пространство вокруг окна
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains('modal-overlay')) {
-      closeModal();
+      handleCancel()
     }
-  };
-
+  }
 
   const onItemClick = (item, position) => {
     setActiveEvent(item)
     setModalPosition(position)
   }
 
-  const minYear = -2400;
-  const maxYear = 2026;
-  const range = maxYear - minYear || 1;
+  // Функция для расчета реального зума устройства
+  const updateScale = () => {
+    // devicePixelRatio показывает отношение физических пикселей к логическим.
+    // При зуме это значение меняется. Мы берем обратное значение, чтобы сжать окно обратно.
+    const currentPixelRatio = window.devicePixelRatio || 1
+    
+    // Ограничим минимальный масштаб, чтобы окно не превратилось в точку при диком зуме
+    const calculatedScale = Math.max(0.3, 1 / currentPixelRatio);
+    setScale(calculatedScale)
+  }
+
+  useEffect(() => {
+    if (activeEvent) {
+      // Считаем масштаб при открытии окна
+      updateScale();
+      // Следим за изменениями, если пользователь зумит с открытым окном
+      window.addEventListener('resize', updateScale)
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateScale)
+    };
+  }, [activeEvent])
+
+
+  const minYear = -2400
+  const maxYear = 2026
+  const range = maxYear - minYear || 1
 
   return (
     <>    
@@ -4991,10 +5016,13 @@ function App() {
       {/* Модальное окно (рендерится только если isOpen === true) */}
       {activeEvent && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
-          <div className="modal-content">
-            <h3>Модальное окно на React</h3>
-            <div>
-            <div className="card-header">
+        {/* Применяем инвертированный масштаб к контенту окна */}
+        <div 
+          className="modal-content" 
+          ref={modalRef}
+          style={{ transform: `scale(${scale})`, top: `{modalPosition}px` }}
+        >
+          <div className="card-header">
               <h3 className="card-title">{activeEvent.title}</h3>                
             </div>
             <br/>
@@ -5013,12 +5041,12 @@ function App() {
               </div>
             )}
             <br/>
-          </div>
-            <button className="close-btn" onClick={handleCancel}>
-              Ок
-            </button>
-          </div>
+          <button className="close-btn" onClick={handleCancel}>
+            Закрыть
+          </button>
         </div>
+      </div>
+        
       )}
     </div>
     {/*<Modal 
