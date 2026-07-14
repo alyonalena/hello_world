@@ -137,3 +137,20 @@ code {
   top: 20px;
   right: 20px,
 }
+
+.ant-modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-modal {
+  /* Убедитесь, что у модального окна нет своей фиксированной позиции */
+  position: relative;
+  max-height: 90vh; /* Чтобы очень высокое модальное окно не выходило за пределы */
+}
