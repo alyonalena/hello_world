@@ -4982,6 +4982,7 @@ function App() {
     <Modal 
         title={<span className="card-year">{activeEvent?.year} г.</span>}
         open={activeEvent} 
+        getContainer={false}
         onOk={handleOk}
         onCancel={handleCancel}
         okButtonProps={{
