@@ -5005,8 +5005,9 @@ function App() {
 
   const onItemClick = (item, positionY, positionX) => {
     setActiveEvent(item)
-    //setModalPositionY(positionY)
-    //setModalPositionY(positionX)
+    console.info(positionY)
+    setModalPositionY(positionY)
+    setModalPositionX(positionX)
   }
 
   // Функция для расчета реального зума устройства
@@ -5024,10 +5025,10 @@ function App() {
     setModalPositionY(window.pageYOffset)
   }
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (activeEvent) {
       // Считаем масштаб при открытии окна
-      updateScale();
+      //updateScale();
       // Следим за изменениями, если пользователь зумит с открытым окном
       window.addEventListener('scroll', updateScale)
       window.addEventListener('scale', updateScale)
@@ -5039,18 +5040,18 @@ function App() {
       window.removeEventListener('scale', updateScale)
     }
 
-  }, [activeEvent])
+  }, [activeEvent])*/
 
   const minYear = -2400
   const maxYear = 2026
   const range = maxYear - minYear || 1
 
-console.info(modalPositionX)
+
 console.info(modalPositionY)
 
   return (
     <>
-      <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
+      <div id="App" className="App" style={{ display: 'flex', minHeight: '100vh' }}>
         <div className="erasBlock">
           {
             culturalEras.map((item, index) =>  {
@@ -5090,6 +5091,34 @@ console.info(modalPositionY)
       <TimelineDemo items={psychologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 13)} title={'Биология'}/>
       <TimelineDemo items={literatureEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Литература'}/>
       <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
+
+      { activeEvent && (
+          <MyModal visible={activeEvent} onClose={handleCancel} positionY={modalPositionY} positionX={modalPositionX} >
+            <div className="card-header">
+              <h3 className="card-title">{activeEvent.title}</h3>                
+            </div>
+            <br/>
+            <p className="card-description">{activeEvent.description}</p>
+            <br/>
+            {activeEvent.tags && (
+              <div className="card-tags">
+                {activeEvent.tags.map((tag, i) => (
+                  <span key={i} className="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            {activeEvent.casualties && (
+              <div className="card-casualties">
+                💀 Потери: {activeEvent.casualties}
+              </div>
+            )}
+            <br/>
+            <button className="close-btn" onClick={handleCancel}>
+              Ок
+            </button>
+            <br/>
+        </MyModal>
+      )}
 
       {/*activeEvent && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
@@ -5170,33 +5199,7 @@ console.info(modalPositionY)
           </div>
         )}
       </Modal>)*/}
-      { activeEvent && (
-        <MyModal visible={activeEvent} onClose={handleCancel}>
-            <div className="card-header">
-              <h3 className="card-title">{activeEvent.title}</h3>                
-            </div>
-            <br/>
-            <p className="card-description">{activeEvent.description}</p>
-            <br/>
-            {activeEvent.tags && (
-              <div className="card-tags">
-                {activeEvent.tags.map((tag, i) => (
-                  <span key={i} className="tag">{tag}</span>
-                ))}
-              </div>
-            )}
-            {activeEvent.casualties && (
-              <div className="card-casualties">
-                💀 Потери: {activeEvent.casualties}
-              </div>
-            )}
-            <br/>
-            <button className="close-btn" onClick={handleCancel}>
-              Ок
-            </button>
-            <br/>
-        </MyModal>
-      )}
+      
       {/*activeEvent && (
         <FloatingModal
           visible={isOpen}
