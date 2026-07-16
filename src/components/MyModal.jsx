@@ -37,7 +37,7 @@ export const MyModal = ({
           overflow: 'auto',
           boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
           bottom: `${Math.min(positionY, 98)}%`,
-          left: `${positionX*250 - 200}px`
+          left: `${positionX*250 - 190}px`
         }}
         onClick={(e) => e.stopPropagation()}
       >

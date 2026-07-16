@@ -5042,7 +5042,7 @@ function App() {
       <TimelineDemo items={chemistryEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 12)} title={'Химия'}/>
       <TimelineDemo items={psychologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 13)} title={'Биология'}/>
       <TimelineDemo items={literatureEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Литература'}/>
-      <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
+      <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Основание городов'}/>
 
       { activeEvent && (
           <MyModal 
