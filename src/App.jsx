@@ -5051,7 +5051,7 @@ function App() {
             positionY={modalPositionY} 
             positionX={modalPositionX} 
           >
-            <span className="tag">{<strong>{Number(activeEvent.year) > 0 ? `${activeEvent.year} г.`: `${activeEvent.year} г. (до Н.Э.)`}</strong>}</span>
+            {<h3>{Number(activeEvent.year) > 0 ? `${activeEvent.year} г.`: `${activeEvent.year} г. (до Н.Э.)`}</h3>}
             <div className="card-header">
               <h3 className="card-title">{activeEvent.title}</h3>                
             </div>
