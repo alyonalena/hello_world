@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 import TimelineDemo from './components/TimelineDemo'
 import { Modal } from 'antd';
+import { MyModal } from './components/MyModal'
 
 const historical_events = [
   {
@@ -5126,7 +5127,7 @@ console.info(modalPositionY)
         </div>
       )*/}
     </div>
-    {(<Modal 
+    {/*(<Modal 
         title={<span className="card-year">{activeEvent?.year} г.</span>}
         open={activeEvent} 
         getContainer={document.body}
@@ -5168,7 +5169,34 @@ console.info(modalPositionY)
             <br/>
           </div>
         )}
-      </Modal>)}
+      </Modal>)*/}
+      { activeEvent && (
+        <MyModal visible={activeEvent} onClose={handleCancel}>
+            <div className="card-header">
+              <h3 className="card-title">{activeEvent.title}</h3>                
+            </div>
+            <br/>
+            <p className="card-description">{activeEvent.description}</p>
+            <br/>
+            {activeEvent.tags && (
+              <div className="card-tags">
+                {activeEvent.tags.map((tag, i) => (
+                  <span key={i} className="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+            {activeEvent.casualties && (
+              <div className="card-casualties">
+                💀 Потери: {activeEvent.casualties}
+              </div>
+            )}
+            <br/>
+            <button className="close-btn" onClick={handleCancel}>
+              Ок
+            </button>
+            <br/>
+        </MyModal>
+      )}
     </>
   );
 }
