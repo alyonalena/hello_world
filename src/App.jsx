@@ -5091,7 +5091,7 @@ console.info(modalPositionY)
       <TimelineDemo items={literatureEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Литература'}/>
       <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
 
-      {/*activeEvent && (
+      {activeEvent && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
           <div 
             className="modal-content" 
@@ -5125,7 +5125,7 @@ console.info(modalPositionY)
             </button>
           </div>
         </div>
-      )*/}
+      )}
     </div>
     {/*(<Modal 
         title={<span className="card-year">{activeEvent?.year} г.</span>}
@@ -5170,7 +5170,7 @@ console.info(modalPositionY)
           </div>
         )}
       </Modal>)*/}
-      { activeEvent && (
+      { /*activeEvent && (
         <MyModal visible={activeEvent} onClose={handleCancel}>
             <div className="card-header">
               <h3 className="card-title">{activeEvent.title}</h3>                
@@ -5196,7 +5196,18 @@ console.info(modalPositionY)
             </button>
             <br/>
         </MyModal>
-      )}
+      )*/}
+      {/*activeEvent && (
+        <FloatingModal
+          visible={isOpen}
+          onClose={() => setIsOpen(false)}
+          anchorX={clickPos.x}
+          anchorY={clickPos.y}
+        >
+          <h2>Окно рядом с кликом</h2>
+          <p>Корректирует позицию, чтобы не выходить за экран.</p>
+        </FloatingModal>
+      )*/}
     </>
   );
 }

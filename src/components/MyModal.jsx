@@ -35,7 +35,7 @@ export const MyModal = ({
           background: 'white',
           padding: '20px',
           borderRadius: '8px',
-          maxWidth: '90vw',
+          maxWidth: '700px',
           maxHeight: '90vh',
           overflow: 'auto',
           boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
