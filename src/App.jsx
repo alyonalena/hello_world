@@ -5022,7 +5022,7 @@ function App() {
         <div 
           className="modal-content" 
           ref={modalRef}
-          style={{ transform: `translateY(${100-modalPositionY}%) translateX(${modalPositionX*100}px`}}
+          style={{ transform: `translateY(50%) translateX(50%)`}}
         >
           <div className="card-header">
               <h3 className="card-title">{activeEvent.title}</h3>                
