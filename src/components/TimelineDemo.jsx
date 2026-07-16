@@ -4,7 +4,7 @@ import './TimelineDemo.css'
 
 const TimelineDemo = ({ items, onItemClick, title }) => {
   const [activeIndex, setActiveIndex] = useState(null);
-console.info('RENDERING '+ title)
+
   // Парсим год в число
   const parseYear = (yearStr) => {
     const cleaned = yearStr
@@ -25,7 +25,6 @@ console.info('RENDERING '+ title)
   const handleItemClick = (event, position) => {
     setActiveIndex(event.index)
     onItemClick(event, position)
-    console.info(position)
   };
 
   const minYear = -2400;

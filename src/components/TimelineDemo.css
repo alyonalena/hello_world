@@ -101,7 +101,6 @@
   border-radius: 4px;
   opacity: 0.7;
   transition: opacity 0.3s ease;
-
 }
 
 .timeline-item:hover .timeline-year,
@@ -279,7 +278,6 @@
 
   .timeline-year {
     font-size: 9px;
-    bottom: 22px;
   }
 
   .timeline-card {

@@ -1211,6 +1211,15 @@ const physicsEvents = [
     image: ''
   },
   {
+    year: "1769",
+    title: "Паровая машина Джеймса Уатта",
+    shortTitle: "Паровая машина",
+    description: "Джеймс Уатт запатентовал усовершенствованную паровую машину с отдельным конденсатором, что значительно повысило её эффективность. Это изобретение стало двигателем промышленной революции, обеспечив энергией фабрики, шахты и транспорт.",
+    category: "physics",
+    tags: ["теплотехника", "XVIII век", "Уатт", "энергия"],
+    image: ""
+  },
+  {
     year: '1687',
     title: 'Закон всемирного тяготения Ньютона',
     shortTitle: 'Исаак Ньютон',
@@ -2768,6 +2777,15 @@ const rightsEvents = [
     image: ''
   },
   {
+    year: "1833",
+    title: "Фабричный акт в Англии (ограничение детского труда)",
+    shortTitle: "Фабричный акт 1833",
+    description: "Первый крупный закон, ограничивающий рабочий день детей (9-13 лет — не более 9 часов, 13-18 лет — не более 12 часов) и вводивший фабричную инспекцию. Это было начало трудового законодательства как ответ на ужасы индустриализации.",
+    category: "rights",
+    tags: ["детский труд", "Англия", "XIX век", "закон"],
+    image: ""
+  },
+  {
     year: '1776',
     title: 'Декларация независимости США',
     shortTitle: 'Декларация независимости',
@@ -4125,6 +4143,17 @@ const cityEvents = [
     flag: '🇯🇵'
   },
   {
+    year: "1800",
+    title: "Манчестер — город-символ индустриализации",
+    shortTitle: "Манчестер",
+    description: "Население Манчестера выросло с 17 тыс. в 1750-х до 180 тыс. в 1800-х. Город стал центром текстильного производства и первым промышленным мегаполисом, что изменило облик Англии.",
+    category: "cities",
+    tags: ["Англия", "XIX век", "урбанизация", "текстиль"],
+    image: "",
+    population: "180 тыс. (1800)",
+    flag: "🇬🇧"
+  },
+  {
     year: '1537',
     title: '🇮🇳 Бангалор (Индия)',
     shortTitle: 'Бангалор',
@@ -4561,6 +4590,15 @@ const economicsEvents = [
     image: ''
   },
   {
+    year: "1760",
+    title: "Начало промышленной революции в Англии",
+    shortTitle: "Промышленная революция",
+    description: "Переход от аграрного общества к индустриальному. Механизация текстильного производства (прядильная машина «Дженни», ткацкий станок Картрайта), изобретение паровой машины Уатта, появление фабрик и массового производства. Это событие изменило экономику, социальную структуру и экологию планеты.",
+    category: "economics",
+    tags: ["индустриализация", "Англия", "XVIII век", "фабрики"],
+    image: ""
+  },
+  {
     year: '1776',
     title: '«Богатство народов» Адама Смита',
     shortTitle: 'Адам Смит',
@@ -4578,6 +4616,34 @@ const economicsEvents = [
     tags: ['Экономическая теория', 'Марксизм', 'Политическая экономия'],
     image: ''
   },
+  
+  {
+    year: "1903",
+    title: "Основание Ford Motor Company",
+    shortTitle: "Ford Motor Co.",
+    description: "Генри Форд основывает Ford Motor Company в Детройте с 11 инвесторами и начальным капиталом в 28 000 долларов. Компания быстро стала лидером автомобильной промышленности, внедрив инновационные подходы к производству и маркетингу, что положило начало массовой автомобилизации США и мира.",
+    category: "economics",
+    tags: ["автомобили", "США", "XX век", "бизнес"],
+    image: ""
+  },
+  {
+    year: "1913",
+    title: "Внедрение конвейерной сборки на заводе Ford",
+    shortTitle: "Конвейер Форда",
+    description: "Генри Форд внедряет движущуюся конвейерную линию на заводе в Хайленд-Парке для сборки модели T. Время сборки сократилось с 12 часов до 93 минут. Это сделало автомобили доступными (цена Model T упала с 850 до 260 долларов), удвоило производительность и создало модель массового производства, которую переняли все отрасли.",
+    category: "economics",
+    tags: ["конвейер", "массовое производство", "Форд", "автомобили"],
+    image: ""
+  },
+  {
+    year: "1914",
+    title: "Пятидолларовый день на заводах Ford",
+    shortTitle: "5$ в день",
+    description: "Генри Форд объявляет о повышении минимальной дневной зарплаты до 5 долларов (вдвое выше средней по отрасли). Это снизило текучесть кадров, повысило производительность и создало основу для массового потребительского рынка. Форд стал символом капитализма, который заботится о благосостоянии рабочих.",
+    category: "economics",
+    tags: ["зарплата", "социальная политика", "Форд", "рабочий класс"],
+    image: ""
+  },
   {
     year: '1929',
     title: 'Великая депрессия (Биржевой крах)',
@@ -4587,6 +4653,7 @@ const economicsEvents = [
     tags: ['Кризис', 'США', 'Великая депрессия'],
     image: ''
   },
+  
   {
     year: '1936',
     title: '«Общая теория занятости» Кейнса',
@@ -4923,6 +4990,7 @@ function App() {
 
   const [ scale, setScale ] = useState(1)
   const modalRef = useRef(null)
+  
 
   const handleOk = () => setActiveEvent(null)
   const handleCancel = () => setActiveEvent(null)
@@ -4936,8 +5004,8 @@ function App() {
 
   const onItemClick = (item, positionY, positionX) => {
     setActiveEvent(item)
-    setModalPositionY(positionY)
-    setModalPositionY(positionX)
+    //setModalPositionY(positionY)
+    //setModalPositionY(positionX)
   }
 
   // Функция для расчета реального зума устройства
@@ -4945,10 +5013,14 @@ function App() {
     // devicePixelRatio показывает отношение физических пикселей к логическим.
     // При зуме это значение меняется. Мы берем обратное значение, чтобы сжать окно обратно.
     const currentPixelRatio = window.devicePixelRatio || 1
-    
+    console.info(window.pageXOffset)
+    console.info(window.pageYOffset)
+
     // Ограничим минимальный масштаб, чтобы окно не превратилось в точку при диком зуме
     const calculatedScale = Math.max(0.3, 1 / currentPixelRatio);
     setScale(calculatedScale)
+    setModalPositionX(window.pageXOffset)
+    setModalPositionY(window.pageYOffset)
   }
 
   useEffect(() => {
@@ -4956,14 +5028,14 @@ function App() {
       // Считаем масштаб при открытии окна
       updateScale();
       // Следим за изменениями, если пользователь зумит с открытым окном
-      window.addEventListener('resize', updateScale)
+      window.addEventListener('scroll', updateScale)
     }
 
     return () => {
-      window.removeEventListener('resize', updateScale)
-    };
-  }, [activeEvent])
+      window.removeEventListener('scroll', updateScale)
+    }
 
+  }, [activeEvent])
 
   const minYear = -2400
   const maxYear = 2026
@@ -4971,83 +5043,78 @@ function App() {
 
   return (
     <>
-    <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
-      <div className="erasBlock">
-      {
-        culturalEras.map((item, index) =>  {
-          const height = (Math.abs(item.startYear-item.endYear) / range) * 100
-          const position = ((item.startYear - minYear) / range) * 100
+      <div className="App" style={{ display: 'flex', minHeight: '100vh' }}>
+        <div className="erasBlock">
+          {
+            culturalEras.map((item, index) =>  {
+              const height = (Math.abs(item.startYear-item.endYear) / range) * 100
+              const position = ((item.startYear - minYear) / range) * 100
 
+              return (
+                <div 
+                  key={item.id}
+                  className="era"
+                  style={{
+                    height: `${height}%`,
+                    bottom: `${position}%` ,
+                    backgroundColor: `#43c8da`,
+                    background: 'linear-gradient(to top,rgb(184, 234, 240), #fff)'
+                  }}
+                >
+                  <h1>~{item.startYear < 0 ? `${Math.abs(item.startYear)} г. до Н.Э.` : `${item.startYear} г.`}: {item.title}</h1>
+                </div>
+              )
+            }
+          )}
+        </div>
 
-          return (
-            <div 
-              key={item.id}
-              className="era"
-              style={{
-                height: `${height}%`,
-                bottom: `${position}%` ,
-                backgroundColor: `#43c8da`,
-                background: 'linear-gradient(to top,rgb(184, 234, 240), #fff)'
-              }}
-            >
-              <h1>~{item.startYear < 0 ? `${Math.abs(item.startYear)} г. до Н.Э.` : `${item.startYear} г.`}: {item.title}</h1>
-            </div>
-          )
-        }
-      )}
+      <TimelineDemo items={philosophyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 1)} title={'Философия'}/>
+      <TimelineDemo items={warEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 2)} title={'Войны'}/>
+      <TimelineDemo items={rightsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 3)} title={'Права и свободы'}/>
+      <TimelineDemo items={internationalLawEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 4)} title={'Международное право'}/>
+      <TimelineDemo items={economicsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 5)} title={'Экономика'}/>
+      <TimelineDemo items={conceptEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 6)} title={'Концепции'}/>
+      <TimelineDemo items={religionEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 7)} title={'Религия'}/>
+      <TimelineDemo items={spaceEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 8)} title={'Космос'}/>
+      <TimelineDemo items={itEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 9)} title={'ИТ'}/>  
+      <TimelineDemo items={biologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 20)} title={'Науки о человеке'}/>
+      <TimelineDemo items={physicsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 11)} title={'Физика'}/>
+      <TimelineDemo items={chemistryEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 12)} title={'Химия'}/>
+      <TimelineDemo items={psychologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 13)} title={'Биология'}/>
+      <TimelineDemo items={literatureEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Литература'}/>
+      <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
 
-
-      </div>
-      {/*<TimelineDemo items={historical_events} onItemClick={setActiveEvent}/>*/}
-        <TimelineDemo items={philosophyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 1)} title={'Философия'}/>
-        <TimelineDemo items={warEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 2)} title={'Войны'}/>
-        <TimelineDemo items={rightsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 3)} title={'Права и свободы'}/>
-        <TimelineDemo items={internationalLawEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 4)} title={'Международное право'}/>
-        <TimelineDemo items={economicsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 5)} title={'Экономика'}/>
-        <TimelineDemo items={conceptEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 6)} title={'Концепции'}/>
-        <TimelineDemo items={religionEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 7)} title={'Религия'}/>
-        <TimelineDemo items={spaceEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 8)} title={'Космос'}/>
-        <TimelineDemo items={itEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 9)} title={'ИТ'}/>  
-        <TimelineDemo items={biologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 20)} title={'Науки о человеке'}/>
-        <TimelineDemo items={physicsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 11)} title={'Физика'}/>
-        <TimelineDemo items={chemistryEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 12)} title={'Химия'}/>
-        <TimelineDemo items={psychologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 13)} title={'Биология'}/>
-        <TimelineDemo items={literatureEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Литература'}/>
-        <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
-      {/*
-      */}     
-      {/* Модальное окно (рендерится только если isOpen === true) */}
       {activeEvent && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
-        <div 
-          className="modal-content" 
-          ref={modalRef}
-          style={{ transform: `translateY(50%) translateX(50%)`}}
-        >
-          <div className="card-header">
-              <h3 className="card-title">{activeEvent.title}</h3>                
-            </div>
-            <br/>
-            <p className="card-description">{activeEvent.description}</p>
-            <br/>
-            {activeEvent.tags && (
-              <div className="card-tags">
-                {activeEvent.tags.map((tag, i) => (
-                  <span key={i} className="tag">{tag}</span>
-                ))}
+          <div 
+            className="modal-content" 
+            ref={modalRef}
+            style={{ transform: `translateY(${modalPositionY}px), translateX(${modalPositionX}px` }}
+          >
+            <div className="card-header">
+                <h3 className="card-title">{activeEvent.title}</h3>                
               </div>
-            )}
-            {activeEvent.casualties && (
-              <div className="card-casualties">
-                💀 Потери: {activeEvent.casualties}
-              </div>
-            )}
-            <br/>
-          <button className="close-btn" onClick={handleCancel}>
-            Закрыть
-          </button>
+              <br/>
+              <p className="card-description">{activeEvent.description}</p>
+              <br/>
+              {activeEvent.tags && (
+                <div className="card-tags">
+                  {activeEvent.tags.map((tag, i) => (
+                    <span key={i} className="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+              {activeEvent.casualties && (
+                <div className="card-casualties">
+                  💀 Потери: {activeEvent.casualties}
+                </div>
+              )}
+              <br/>
+            <button className="close-btn" onClick={handleCancel}>
+              Закрыть
+            </button>
+          </div>
         </div>
-      </div>        
       )}
     </div>
     {/*<Modal 
