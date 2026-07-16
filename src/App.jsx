@@ -5029,10 +5029,13 @@ function App() {
       updateScale();
       // Следим за изменениями, если пользователь зумит с открытым окном
       window.addEventListener('scroll', updateScale)
+      window.addEventListener('scale', updateScale)
+
     }
 
     return () => {
       window.removeEventListener('scroll', updateScale)
+      window.removeEventListener('scale', updateScale)
     }
 
   }, [activeEvent])
@@ -5040,6 +5043,9 @@ function App() {
   const minYear = -2400
   const maxYear = 2026
   const range = maxYear - minYear || 1
+
+console.info(modalPositionX)
+console.info(modalPositionY)
 
   return (
     <>
@@ -5084,12 +5090,15 @@ function App() {
       <TimelineDemo items={literatureEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 14)} title={'Литература'}/>
       <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
 
-      {activeEvent && (
+      {/*activeEvent && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
           <div 
             className="modal-content" 
             ref={modalRef}
-            style={{ transform: `translateY(${modalPositionY}px), translateX(${modalPositionX}px` }}
+            style={{ 
+              transform: `translateY(${modalPositionY}px), translateX(${modalPositionX}px)`,
+              border: '1px solid red' 
+            }}
           >
             <div className="card-header">
                 <h3 className="card-title">{activeEvent.title}</h3>                
@@ -5115,12 +5124,12 @@ function App() {
             </button>
           </div>
         </div>
-      )}
+      )*/}
     </div>
-    {/*<Modal 
+    {(<Modal 
         title={<span className="card-year">{activeEvent?.year} г.</span>}
         open={activeEvent} 
-        getContainer={false}
+        getContainer={document.body}
         onOk={handleOk}
         onCancel={handleCancel}
         okButtonProps={{
@@ -5132,13 +5141,9 @@ function App() {
           },
           type: 'primary',
         }}
-        style={{
-          top: modalPosition
-        }}
         cancelButtonProps={{
           style: { display: 'none' },
         }}
-
       >
         {activeEvent && (
           <div>
@@ -5163,7 +5168,7 @@ function App() {
             <br/>
           </div>
         )}
-      </Modal>*/}
+      </Modal>)}
     </>
   );
 }
