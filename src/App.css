@@ -203,7 +203,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 12px;
+
   transition: all 0.3s ease;
   border-right: 2px solid rgba(255, 255, 255, 0.5);
   background-color: #947fff;
