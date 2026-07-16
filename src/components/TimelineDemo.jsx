@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react'
-import { Popover } from 'antd'
 import './TimelineDemo.css'
 
 const TimelineDemo = ({ items, onItemClick, title }) => {
@@ -53,10 +52,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
             >
                 <div className="timeline-point">
                   <span className="timeline-year"><strong>{Number(item.year) > 0 ? `${item.year} г.`: `${item.year} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle}</span>
-                </div>       
-                {/*} <div className="timeline-content">
-                <span className="timeline-label">{item.shortTitle || item.title}</span>
-              </div>*/}
+                </div>
             </div>
           );
         })}

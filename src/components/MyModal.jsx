@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-
-/*interface CenteredModalProps {
-  visible: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-}*/
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 export const MyModal = ({
   visible,
@@ -16,8 +10,6 @@ export const MyModal = ({
 }) => {
   if (!visible) return null;
 
-console.info(positionX)
-console.info(positionY)
 
   return ReactDOM.createPortal(
     <div
@@ -46,13 +38,13 @@ console.info(positionY)
           boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
           left: `300px`,
           bottom: `${Math.min(positionY, 98)}%`,
-          left: `${positionX*200}px`
+          left: `${positionX*250 - 200}px`
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
       </div>
     </div>,
-    document.getElementById('App') // рендерим прямо в body – никаких transform-предков
-  );
-};
+    document.getElementById('App') 
+  )
+}

@@ -4989,65 +4989,17 @@ function App() {
   const [ modalPositionY, setModalPositionY ] = useState(0)
   const [ modalPositionX, setModalPositionX ] = useState(0)
 
-  const [ scale, setScale ] = useState(1)
-  const modalRef = useRef(null)
-  
-
-  const handleOk = () => setActiveEvent(null)
   const handleCancel = () => setActiveEvent(null)
-
-  // Закрытие при клике на серое пространство вокруг окна
-  const handleOverlayClick = (e) => {
-    if (e.target.classList.contains('modal-overlay')) {
-      handleCancel()
-    }
-  }
 
   const onItemClick = (item, positionY, positionX) => {
     setActiveEvent(item)
-    console.info(positionY)
     setModalPositionY(positionY)
     setModalPositionX(positionX)
   }
 
-  // Функция для расчета реального зума устройства
-  const updateScale = () => {
-    // devicePixelRatio показывает отношение физических пикселей к логическим.
-    // При зуме это значение меняется. Мы берем обратное значение, чтобы сжать окно обратно.
-    const currentPixelRatio = window.devicePixelRatio || 1
-    console.info(window.pageXOffset)
-    console.info(window.pageYOffset)
-
-    // Ограничим минимальный масштаб, чтобы окно не превратилось в точку при диком зуме
-    const calculatedScale = Math.max(0.3, 1 / currentPixelRatio);
-    setScale(calculatedScale)
-    setModalPositionX(window.pageXOffset)
-    setModalPositionY(window.pageYOffset)
-  }
-
-  /*useEffect(() => {
-    if (activeEvent) {
-      // Считаем масштаб при открытии окна
-      //updateScale();
-      // Следим за изменениями, если пользователь зумит с открытым окном
-      window.addEventListener('scroll', updateScale)
-      window.addEventListener('scale', updateScale)
-
-    }
-
-    return () => {
-      window.removeEventListener('scroll', updateScale)
-      window.removeEventListener('scale', updateScale)
-    }
-
-  }, [activeEvent])*/
-
   const minYear = -2400
   const maxYear = 2026
   const range = maxYear - minYear || 1
-
-
-console.info(modalPositionY)
 
   return (
     <>
@@ -5093,7 +5045,13 @@ console.info(modalPositionY)
       <TimelineDemo items={cityEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 15)} title={'Основание городов'}/>
 
       { activeEvent && (
-          <MyModal visible={activeEvent} onClose={handleCancel} positionY={modalPositionY} positionX={modalPositionX} >
+          <MyModal 
+            visible={activeEvent} 
+            onClose={handleCancel} 
+            positionY={modalPositionY} 
+            positionX={modalPositionX} 
+          >
+            <span className="tag">{<strong>{Number(activeEvent.year) > 0 ? `${activeEvent.year} г.`: `${activeEvent.year} г. (до Н.Э.)`}</strong>}</span>
             <div className="card-header">
               <h3 className="card-title">{activeEvent.title}</h3>                
             </div>
@@ -5119,98 +5077,7 @@ console.info(modalPositionY)
             <br/>
         </MyModal>
       )}
-
-      {/*activeEvent && (
-        <div className="modal-overlay" onClick={handleOverlayClick}>
-          <div 
-            className="modal-content" 
-            ref={modalRef}
-            style={{ 
-              transform: `translateY(${modalPositionY}px), translateX(${modalPositionX}px)`,
-              border: '1px solid red' 
-            }}
-          >
-            <div className="card-header">
-                <h3 className="card-title">{activeEvent.title}</h3>                
-              </div>
-              <br/>
-              <p className="card-description">{activeEvent.description}</p>
-              <br/>
-              {activeEvent.tags && (
-                <div className="card-tags">
-                  {activeEvent.tags.map((tag, i) => (
-                    <span key={i} className="tag">{tag}</span>
-                  ))}
-                </div>
-              )}
-              {activeEvent.casualties && (
-                <div className="card-casualties">
-                  💀 Потери: {activeEvent.casualties}
-                </div>
-              )}
-              <br/>
-            <button className="close-btn" onClick={handleCancel}>
-              Закрыть
-            </button>
-          </div>
-        </div>
-      )*/}
     </div>
-    {/*(<Modal 
-        title={<span className="card-year">{activeEvent?.year} г.</span>}
-        open={activeEvent} 
-        getContainer={document.body}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        okButtonProps={{
-          style: {
-            color: '#f0edff',
-            background: '#6c5ce7',
-            padding: '4px 12px',
-            borderRadius: '16px'
-          },
-          type: 'primary',
-        }}
-        cancelButtonProps={{
-          style: { display: 'none' },
-        }}
-      >
-        {activeEvent && (
-          <div>
-            <div className="card-header">
-              <h3 className="card-title">{activeEvent.title}</h3>                
-            </div>
-            <br/>
-            <p className="card-description">{activeEvent.description}</p>
-            <br/>
-            {activeEvent.tags && (
-              <div className="card-tags">
-                {activeEvent.tags.map((tag, i) => (
-                  <span key={i} className="tag">{tag}</span>
-                ))}
-              </div>
-            )}
-            {activeEvent.casualties && (
-              <div className="card-casualties">
-                💀 Потери: {activeEvent.casualties}
-              </div>
-            )}
-            <br/>
-          </div>
-        )}
-      </Modal>)*/}
-      
-      {/*activeEvent && (
-        <FloatingModal
-          visible={isOpen}
-          onClose={() => setIsOpen(false)}
-          anchorX={clickPos.x}
-          anchorY={clickPos.y}
-        >
-          <h2>Окно рядом с кликом</h2>
-          <p>Корректирует позицию, чтобы не выходить за экран.</p>
-        </FloatingModal>
-      )*/}
     </>
   );
 }
