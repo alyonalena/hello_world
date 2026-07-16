@@ -5037,7 +5037,7 @@ function App() {
       <TimelineDemo items={religionEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 7)} title={'Религия'}/>
       <TimelineDemo items={spaceEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 8)} title={'Космос'}/>
       <TimelineDemo items={itEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 9)} title={'ИТ'}/>  
-      <TimelineDemo items={biologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 20)} title={'Науки о человеке'}/>
+      <TimelineDemo items={biologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 10)} title={'Науки о человеке'}/>
       <TimelineDemo items={physicsEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 11)} title={'Физика'}/>
       <TimelineDemo items={chemistryEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 12)} title={'Химия'}/>
       <TimelineDemo items={psychologyEvents} onItemClick={(item, positionY) => onItemClick(item, positionY, 13)} title={'Биология'}/>
