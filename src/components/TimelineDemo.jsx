@@ -50,9 +50,9 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
               onClick={() => handleItemClick(item, position)}
               style={{ bottom: `${position}%` }}
             >
-                <div className="timeline-point">
-                  <span className="timeline-year"><strong>{Number(item.year) > 0 ? `${item.year} г.`: `${item.year} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle}</span>
-                </div>
+              <div className="timeline-point">
+                <span className="timeline-year"><strong style={item.won ? { color: '#297D69'}: {}}>{Number(item.year) > 0 ? `${item.year} г.`: `${item.year} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle}</span>
+              </div>
             </div>
           );
         })}

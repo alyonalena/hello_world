@@ -73,13 +73,13 @@
 }
 
 .timeline-item.active .timeline-point {
-  background: #6c5ce7;
+  background: #3C3280;
   transform: scale(1.4);
   box-shadow: 0 0 0 8px rgba(108, 92, 231, 0.2);
 }
 
 .timeline-item:hover .timeline-point {
-  background: #6c5ce7;
+  background: #3C3280;
   transform: scale(1.2);
 }
 
@@ -103,7 +103,7 @@
 .timeline-item:hover .timeline-year,
 .timeline-item.active .timeline-year {
   opacity: 1;
-  color: #6c5ce7;
+  color: #3C3280;
 }
 
 /* Название события (под точкой) */
@@ -129,7 +129,7 @@
 }
 
 .timeline-item.active .timeline-label {
-  color: #6c5ce7;
+  color: #090909;
   font-weight: 600;
   background: #f0edff;
 }
@@ -215,7 +215,7 @@
 .card-year {
   font-size: 14px;
   font-weight: 600;
-  color: #6c5ce7;
+  color: #3C3280;
   background: #f0edff;
   padding: 4px 14px;
   border-radius: 20px;

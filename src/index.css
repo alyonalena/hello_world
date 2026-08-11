@@ -113,7 +113,7 @@ code {
   z-index: 2;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 30px;
+  padding: 10px;
 }
 
 .era h1 {
@@ -123,9 +123,16 @@ code {
   color: black;
 }
 
+.era h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  opacity: 0.1;
+  color: black;
+}
+
 .App {
   position: absolute;
-  top: 0;
+  top: 30px;
   left: 0;
   z-index: 1200;
 }
@@ -191,7 +198,7 @@ code {
 .close-btn {
   margin-top: 20px;
   color: #f0edff;
-  background: #6c5ce7;
+  background: #231D4A;
   padding: 4px 12px;
   color: white;
   border: none;
@@ -242,5 +249,10 @@ code {
   height: 100vh !important;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.card-header {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
