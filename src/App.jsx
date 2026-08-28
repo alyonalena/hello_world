@@ -13,15 +13,16 @@ import AppAbout from "./AppAbout"
 export default function App() {
   // Navigation styling logic for active links
   const activeStyle = ({ isActive }) => ({
-    fontSize: '0.8rem',
-    fontWeight: isActive ? "bold" : "bold",
-    color: isActive ? "#f0edff" : "#231D4A",
-    background: isActive ? "#231D4A": "#f0edff",
+    fontSize: '0.7rem',
+    background: isActive ? "#B00000" : "#F2F2F2",
+    color: isActive ? "white": "#1E1F1F",
     marginRight: "10px",
     textDecoration: 'none',
-    padding: '6px 18px',
+    padding: '8px 24px 8px 24px',
     border: 'none',
-    borderRadius: '12px',
+    borderRadius: '2rem',
+    boxShadow: '0 5px 8px rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgba(0, 0, 0, 0.08)'
   });
 
 /*

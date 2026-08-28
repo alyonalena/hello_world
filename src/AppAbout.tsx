@@ -6,10 +6,12 @@ function AppAbout() {
     return (
         <div>
             <div id="App" className="App" style={{ display: 'flex', minHeight: '100vh' }}>
-                <h1>О проекте</h1>
-                <>
-                
-                </>
+                <div style={{ padding: '1rem' }}>
+                    <h4>Миссия:</h4>
+                    <p>
+                        Сложить в один пазл все важнейшие знания о мире.
+                    </p>
+                </div>
             </div>           
         </div>
     )
