@@ -6,6 +6,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
 
   // Парсим год в число
   const parseYear = (yearStr) => {
+    console.info(yearStr)
     const cleaned = yearStr
       .replace(/\s*г\.?\s*/, '')
       .replace('до н.э.', '-')
@@ -17,7 +18,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
   // Сортируем события по году (для правильного отображения снизу вверх)
   const sortedItems = useMemo(() => {
     return [...items]
-      .map((item, index) => ({ ...item, index, sortYear: parseYear(item.year) }))
+      .map((item, index) => ({ ...item, index, sortYear: parseYear(item.year || item.startYear.toString() || '') }))
       .sort((a, b) => a.sortYear - b.sortYear);
   }, [items]);
 
@@ -39,8 +40,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
 
         {/* Метки событий */}
         {sortedItems.map((item, idx) => {
-          const year = parseYear(item.year);
-          const position = ((year - minYear) / range) * 100;
+          const position = ((item.sortYear - minYear) / range) * 100;
 
           return (
             
@@ -51,7 +51,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
               style={{ bottom: `${position}%` }}
             >
               <div className="timeline-point">
-                <span className="timeline-year"><strong style={item.won ? { color: '#297D69'}: {}}>{Number(item.year) > 0 ? `${item.year} г.`: `${item.year} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle}</span>
+                <span className="timeline-year"><strong style={item.won ? { color: '#297D69'}: {}}>{item.sortYear > 0 ? `${item.sortYear} г.`: `${item.sortYear} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle || item.name}</span>
               </div>
             </div>
           );

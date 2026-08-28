@@ -2,11 +2,8 @@ import React from "react"
 import { 
   BrowserRouter, 
   Routes, 
-  Route, 
-  Link, 
-  NavLink, 
-  useParams, 
-  Outlet 
+  Route,
+  NavLink,
 } from "react-router-dom"
 import AppGeneral from "./AppGeneral"
 import AppRussian from "./AppRussian"
@@ -55,6 +52,7 @@ export default function App() {
           <div>
             <NavLink to="/" style={activeStyle}>Всеобщая история</NavLink>
             <NavLink to="/russian" style={activeStyle}>История России</NavLink>
+            <NavLink to="/about" style={activeStyle}>О проекте</NavLink>
           </div>
           {/*<div>
             <NavLink to="/about" style={activeStyle}>?</NavLink>
@@ -71,5 +69,5 @@ export default function App() {
         </main>
       </div>
     </BrowserRouter>
-  );
+  )
 }
