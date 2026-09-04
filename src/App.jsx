@@ -41,8 +41,7 @@ export default function App() {
         <nav 
           style={{ 
             padding: "10px 60px 10px 30px", 
-            backgroundColor: "white", 
-            width: '95vw', 
+            backgroundColor: "white",
             display: 'flex', 
             justifyContent: 'space-between',
             position: 'fixed',
