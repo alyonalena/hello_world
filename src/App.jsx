@@ -43,10 +43,10 @@ export default function App() {
             padding: "10px 60px 10px 30px", 
             backgroundColor: "white",
             display: 'flex', 
-            justifyContent: 'space-between',
             position: 'fixed',
             top: 0,
-            left: 0
+            left: 0,
+            minWidth: '500px'
           }}
         >
           <div>
