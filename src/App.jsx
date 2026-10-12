@@ -9,12 +9,12 @@ import AppGeneral from "./AppGeneral"
 import AppRussian from "./AppRussian"
 import AppAbout from "./AppAbout"
 
-
 export default function App() {
+
   // Navigation styling logic for active links
   const activeStyle = ({ isActive }) => ({
-    fontSize: '0.7rem',
-    background: isActive ? "#B00000" : "#F2F2F2",
+    fontSize: '0.7rem',    
+    background: isActive ? "#4F2229 " : "#F2F2F2",
     color: isActive ? "white": "#1E1F1F",
     marginRight: "10px",
     textDecoration: 'none',

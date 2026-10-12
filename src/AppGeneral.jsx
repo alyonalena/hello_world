@@ -5017,8 +5017,8 @@ function AppGeneral() {
                   style={{
                     height: `${height}%`,
                     bottom: `${position}%` ,
-                    backgroundColor: `#43c8da`,
-                    background: 'linear-gradient(to top,rgb(184, 234, 240), #fff)'
+                    backgroundColor: `#A8C4D4`,
+                    background: 'linear-gradient(to top, #A8C4D4, #fff)'
                   }}
                 >
                   <h1>~{item.startYear < 0 ? `${Math.abs(item.startYear)} г. до Н.Э.` : `${item.startYear} г.`}: {item.title}</h1>

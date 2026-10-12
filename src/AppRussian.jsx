@@ -3697,8 +3697,8 @@ function AppRussian() {
                   style={{
                     height: `${height}%`,
                     bottom: `${position}%` ,
-                    backgroundColor: `#43c8da`,
-                    background: 'linear-gradient(to top,rgb(184, 234, 240), #fff)'
+                    backgroundColor: `#B1A4C2`,
+                    background: 'linear-gradient(to top,#B1A4C2, #fff)'
                   }}
                 >
                   <h3>{item.year < 0 ? `${Math.abs(item.year)} г. до Н.Э.` : `${item.year} г.`}: {item.title}</h3>
@@ -3717,6 +3717,7 @@ function AppRussian() {
       <TimelineDemo items={russianCapitals} onItemClick={(item, positionY) => onItemClick(item, positionY, 1)} title={'Города'}/>   
       
       { activeEvent && (
+
           <MyModal 
             visible={activeEvent} 
             onClose={handleCancel} 

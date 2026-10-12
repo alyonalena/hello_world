@@ -51,7 +51,7 @@ const TimelineDemo = ({ items, onItemClick, title }) => {
               style={{ bottom: `${position}%` }}
             >
               <div className="timeline-point">
-                <span className="timeline-year"><strong style={item.won ? { color: '#297D69'}: {}}>{item.sortYear > 0 ? `${item.sortYear} г.`: `${item.sortYear} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle || item.name}</span>
+                <span className="timeline-year"><strong style={item.won ? { color: '#184A3E'}: {}}>{item.sortYear > 0 ? `${item.sortYear} г.`: `${item.sortYear} г. (до Н.Э.)`}</strong> {item.title || item.shortTitle || item.name}</span>
               </div>
             </div>
           );
